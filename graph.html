@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+
+.chart
+{ 
+transform: rotate(270deg);  
+position: absolute; 
+top: 0px; 
+width: 75%; 
+border-left: 1px solid black;  
+border-top: 1px solid black; 
+}
+.chart1
+{ 
+transform: rotate(270deg);  
+position: absolute; 
+top: 0px; 
+width: 75%; 
+border-left: 1px solid black;  
+border-top: 1px solid black; 
+}
+.chart1 div 
+{
+  font: 20px sans-serif;
+  background-color: red;
+  text-align: right;
+  padding: 3px;
+  margin: 5px;
+  color: black;
+}
+.chart div 
+{
+  font: 20px sans-serif;
+  background-color: red;
+  text-align: right;
+  padding: 3px;
+  margin: 5px;
+  color: black;
+}
+button
+{ 
+height: 30px;
+border-radius: 10px;
+width: 70px;
+background-color: green; 
+color: white; 
+border: 1px solid; padding: 4px; 
+}
+input
+{
+	color: green;
+	font-size: 1.2em;
+height: 20px;
+width: 130px;
+border-radius: 10px;	
+}
+</style>
+
+<script>
+var a="";
+ function bargraph()
+ {
+ $("#barsSort").hide();
+	  var Barpoint=document.getElementById('point').value;
+	  a=a+Barpoint+",";
+	  
+      var d1 = document.getElementById('bars');
+var myHTML='<div style="width: '+Barpoint+'%;">'+Barpoint+'</div>';
+d1.insertAdjacentHTML('beforeend', myHTML);
+ document.getElementById('point').value="";
+ 
+}
+
+function sort()
+{
+$("#bars").hide();
+$("#barsSort").show();
+var bar = a.split(",");
+	  var srt=bar.sort();
+	  srt.forEach(function(entry){
+	  var dd = document.getElementById('barsSort');
+var myHTML='<div style="width: '+entry+'%;">'+entry+'</div>';
+dd.insertAdjacentHTML('beforeend', myHTML);
+ document.getElementById('point').value="";
+	  });
+	  
+	  
+	  
+	  
+}
+</script>
+</head>
+<body>
+<br>
+<br>
+<input type="text" id="point"/> <button onclick="return bargraph();"> Submit </button>
+<button onclick = "sort()">Sort</button>
+<br>
+<div class="chart" id="bars"></div>
+<div class="chart1" id="barsSort"></div>
+
+</body>
+</html>
