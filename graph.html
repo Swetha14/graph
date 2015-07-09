@@ -64,6 +64,8 @@ border-radius: 10px;
 var a="";
  function bargraph()
  {
+ if(document.getElementById('point').value!="")
+ {
  $("#barsSort").hide();
 	  var Barpoint=document.getElementById('point').value;
 	  a=a+Barpoint+",";
@@ -72,7 +74,11 @@ var a="";
 var myHTML='<div style="width: '+Barpoint+'%;">'+Barpoint+'</div>';
 d1.insertAdjacentHTML('beforeend', myHTML);
  document.getElementById('point').value="";
- 
+ }
+ else
+ {
+ alert("Enter a value");
+ }
 }
 
 function sort()
@@ -80,12 +86,15 @@ function sort()
 $("#bars").hide();
 $("#barsSort").show();
 var bar = a.split(",");
-	  var srt=bar.sort();
+	  var srt=bar.sort()
 	  srt.forEach(function(entry){
+	  if(entry!="")
+	  {
 	  var dd = document.getElementById('barsSort');
 var myHTML='<div style="width: '+entry+'%;">'+entry+'</div>';
 dd.insertAdjacentHTML('beforeend', myHTML);
  document.getElementById('point').value="";
+ }
 	  });
 	  
 	  
@@ -98,8 +107,11 @@ dd.insertAdjacentHTML('beforeend', myHTML);
 <br>
 <br>
 <input type="text" id="point"/> <button onclick="return bargraph();"> Submit </button>
+
 <button onclick = "sort()">Sort</button>
+
 <br>
+
 <div class="chart" id="bars"></div>
 <div class="chart1" id="barsSort"></div>
 
